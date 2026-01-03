@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cleaning Summary</title>
+</head>
+<body>
+
+    <h2>Data Cleaning Summary</h2>
+
+    <ul>
+        <li><strong>Total Rows (Before):</strong> {{ summary.rows_before }}</li>
+        <li><strong>Total Rows (After):</strong> {{ summary.rows_after }}</li>
+        <li><strong>Duplicates Removed:</strong> {{ summary.duplicates_removed }}</li>
+        <li><strong>Missing Values (Before):</strong> {{ summary.missing_before }}</li>
+        <li><strong>Missing Values (After):</strong> {{ summary.missing_after }}</li>
+        <li><strong>Numeric Strategy Used:</strong> {{ summary.numeric_strategy }}</li>
+        <li><strong>Categorical Strategy Used:</strong> {{ summary.categorical_strategy }}</li>
+    </ul>
+
+    <h3>Column-wise Missing Values</h3>
+
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tr>
+            <th>Column</th>
+            <th>Missing Before</th>
+            <th>Missing After</th>
+        </tr>
+
+        {% for column, before_count in summary.missing_by_column_before.items() %}
+        <tr>
+            <td>{{ column }}</td>
+            <td>{{ before_count }}</td>
+            <td>{{ summary.missing_by_column_after[column] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+
+    <a href="/cleaned/{{ summary.file_name }}" download>
+         Download Cleaned CSV
+    </a>
+
+    <br><br>
+
+    <a href="/"> Clean Another File</a>
+
+</body>
+</html>

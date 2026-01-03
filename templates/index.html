@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart CSV Data Cleaner</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Smart CSV Data Cleaner</h2>
+        <p>Upload a CSV file to clean missing values and duplicates</p>
+
+        <form action="/upload" method="post" enctype="multipart/form-data">
+
+            <label>Numeric Missing Value Strategy</label>
+            <select name="numeric_strategy">
+                <option value="mean">Mean</option>
+                <option value="median">Median</option>
+                <option value="mode">Mode</option>
+            </select>
+
+            <label>Categorical Missing Value Strategy</label>
+            <select name="categorical_strategy">
+                <option value="mode">Mode</option>
+                <option value="constant">Not Available</option>
+            </select>
+
+            <label>Select CSV File</label>
+            <input type="file" name="file" accept=".csv" required>
+
+            <button type="submit">Upload & Clean</button>
+        </form>
+
+        <div class="footer">
+            Built with FastAPI & Pandas
+        </div>
+    </div>
+
+</body>
+</html>
