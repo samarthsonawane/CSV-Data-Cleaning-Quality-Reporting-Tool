@@ -1,0 +1,17 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+
+# Runtime folders
+uploads/
+cleaned/
+
+# Local test files
+test.csv
+
+# OS files
+.DS_Store
+Thumbs.db
